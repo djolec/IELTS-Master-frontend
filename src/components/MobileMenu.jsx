@@ -71,7 +71,7 @@ const MobileMenu = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                 className="flex items-center gap-2 text-lg font-medium text-red-600 hover:text-red-700 w-full text-left"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  logout();
+                  logout({ returnTo: window.location.origin });
                 }}
               >
                 <LogOut className="h-5 w-5" />

@@ -22,7 +22,7 @@ export const useCreateCheckoutSession = () => {
     },
     onError: (err) => {
       if (err.error === "invalid_grant") {
-        logout();
+        logout({ returnTo: window.location.origin });
       } else {
         toast.error(err.toString());
         reset();

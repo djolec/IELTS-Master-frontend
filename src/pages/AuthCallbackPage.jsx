@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams } from "react-router";
 
 const AuthCallbackPage = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth0();
+  const { user } = useAuth0();
   const { createUser } = useCreateUser();
   const [searchParams] = useSearchParams();
 
@@ -20,7 +20,7 @@ const AuthCallbackPage = () => {
     }
 
     navigate(returnTo);
-  }, [createUser, logout, navigate, returnTo, user]);
+  }, [createUser, navigate, returnTo, user]);
 
   return <>Loading...</>;
 };

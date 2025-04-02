@@ -13,7 +13,7 @@ const UsernameMenu = () => {
 
   const handleLogout = () => {
     setIsUserOpen(false);
-    logout();
+    logout({ returnTo: window.location.origin });
   };
 
   return (
