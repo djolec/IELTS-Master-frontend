@@ -14,7 +14,8 @@ const UsernameMenu = () => {
   const handleLogout = () => {
     console.log(window.location.origin);
     setIsUserOpen(false);
-    logout({ returnTo: window.location.origin });
+    // logout({ returnTo: window.location.origin });
+    logout({ logoutParams: { returnTo: window.location.origin } });
   };
 
   return (
