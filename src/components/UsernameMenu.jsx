@@ -12,6 +12,7 @@ const UsernameMenu = () => {
   useClickOutside(ref, setIsUserOpen);
 
   const handleLogout = () => {
+    console.log(window.location.origin);
     setIsUserOpen(false);
     logout({ returnTo: window.location.origin });
   };
