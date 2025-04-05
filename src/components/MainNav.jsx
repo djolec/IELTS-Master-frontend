@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
 import UsernameMenu from "./UsernameMenu";
 
@@ -7,23 +7,38 @@ const MainNav = () => {
 
   return (
     <nav className="hidden md:flex gap-4 sm:gap-6 items-center">
-      <Link className="text-base font-medium hover:text-blue-600">
+      <NavLink
+        to={"/features"}
+        className={({ isActive }) =>
+          `text-base font-medium hover:text-blue-600 ${
+            isActive ? "text-blue-600 font-semibold" : "text-gray-700"
+          }`
+        }
+      >
         Features
-      </Link>
+      </NavLink>
 
-      <Link
+      <NavLink
         to={"/reading-test"}
-        className="text-base font-medium hover:text-blue-600"
+        className={({ isActive }) =>
+          `text-base font-medium hover:text-blue-600 ${
+            isActive ? "text-blue-600 font-semibold" : "text-gray-700"
+          }`
+        }
       >
         Practice Tests
-      </Link>
+      </NavLink>
 
-      <Link
+      <NavLink
         to={"/pricing"}
-        className="text-base font-medium hover:text-blue-600"
+        className={({ isActive }) =>
+          `text-base font-medium hover:text-blue-600 ${
+            isActive ? "text-blue-600 font-semibold" : "text-gray-700"
+          }`
+        }
       >
         Pricing
-      </Link>
+      </NavLink>
 
       {isAuthenticated ? (
         <UsernameMenu />

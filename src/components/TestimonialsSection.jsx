@@ -124,52 +124,56 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        <div className="relative mt-12">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prev}
-            disabled={currentIndex === 0}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 md:-translate-x-2 xl:-translate-x-8 z-10 p-2 rounded-full bg-white shadow-lg border focus:outline-none focus:ring-2 focus:ring-blue-600
+        <div className="mt-12">
+          <div className="flex items-center">
+            <button
+              onClick={prev}
+              disabled={currentIndex === 0}
+              className={`z-10 p-2 rounded-full bg-white shadow-lg border focus:outline-none focus:ring-2 focus:ring-blue-600
               ${
                 currentIndex === 0
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-gray-50 cursor-pointer"
               }`}
-            aria-label="Previous testimonials"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-600" />
-          </button>
+              aria-label="Previous testimonials"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
 
-          <button
-            onClick={next}
-            disabled={currentIndex >= testimonials.length - itemsPerView}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 md:translate-x-2 xl:translate-x-8 z-10 p-2 rounded-full bg-white shadow-lg border focus:outline-none focus:ring-2 focus:ring-blue-600
+            {/* Testimonials Container */}
+            <div className="overflow-hidden md:mx-4">
+              <div
+                className="flex items-stretch transition-transform duration-300 ease-in-out"
+                style={{
+                  transform: `translateX(-${
+                    (currentIndex * 100) / itemsPerView
+                  }%)`,
+                }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div
+                    key={index}
+                    className="w-full md:w-1/2 flex-shrink-0 px-3"
+                  >
+                    <TestimonialCard testimonial={testimonial} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={next}
+              disabled={currentIndex >= testimonials.length - itemsPerView}
+              className={`z-10 p-2 rounded-full bg-white shadow-lg border focus:outline-none focus:ring-2 focus:ring-blue-600
               ${
                 currentIndex >= testimonials.length - itemsPerView
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-gray-50 cursor-pointer"
               }`}
-            aria-label="Next testimonials"
-          >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
-          </button>
-
-          {/* Testimonials Container */}
-          <div className="overflow-hidden mx-8 px-2 md:px-0">
-            <div
-              className="flex items-stretch transition-transform duration-300 ease-in-out"
-              style={{
-                transform: `translateX(-${
-                  (currentIndex * 100) / itemsPerView
-                }%)`,
-              }}
+              aria-label="Next testimonials"
             >
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full md:w-1/2 flex-shrink-0 px-3">
-                  <TestimonialCard testimonial={testimonial} />
-                </div>
-              ))}
-            </div>
+              <ChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
           </div>
 
           {/* Navigation Dots */}

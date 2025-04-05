@@ -15,18 +15,14 @@ const SubscribePage = () => {
     useCreateCheckoutSession();
 
   useEffect(() => {
-    if (error) {
-      console.log(error?.error);
-    }
-  }, [error]);
-
-  useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
 
   const handleCheckout = async () => {
+    setIsProcessing(true);
+
     const data = await createCheckoutSession({
       auth0Id: user.sub,
       email: user.email,
@@ -106,8 +102,8 @@ const SubscribePage = () => {
               <button
                 onClick={handleCheckout}
                 disabled={isProcessing}
-                className={`cursor-pointer w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-md font-medium hover:bg-blue-700 transition-colors ${
-                  isProcessing ? "opacity-70 cursor-not-allowed" : ""
+                className={`cursor-pointer w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-4 rounded-md font-medium hover:bg-blue-700 transition-colors disabled:cursor-not-allowed ${
+                  isProcessing ? "opacity-70" : ""
                 }`}
               >
                 {isProcessing ? (

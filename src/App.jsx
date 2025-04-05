@@ -7,6 +7,8 @@ import ReadingTestPage from "./pages/ReadingTestPage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import SubscribePage from "./pages/SubscribePage";
 import { useAuth0 } from "@auth0/auth0-react";
+import FeaturesPage from "./pages/FeaturesPage";
+import PracticeTestsPage from "./pages/PracticeTestsPage";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -22,8 +24,9 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/features" element={<FeaturesPage />} />
             <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/reading-test" element={<ReadingTestPage />} />
+            <Route path="/reading-test" element={<PracticeTestsPage />} />
             <Route path="/auth-callback" element={<AuthCallbackPage />} />
             <Route path="/subscribe" element={<SubscribePage />} />
           </Routes>

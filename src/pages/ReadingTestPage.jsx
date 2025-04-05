@@ -3,8 +3,6 @@ import { passages } from "../data/reading";
 import TimerAndControls from "../components/TimerAndControls";
 import ReadingPassage from "../components/ReadingPassage";
 import ReadingPassageQuestions from "../components/ReadingPassageQuestions";
-// import QuestionSection from "../components/QuestionSection";
-// import TestNavigation from "../components/TestNavigation";
 
 const ReadingTestPage = () => {
   const [currentPassage, setCurrentPassage] = useState(0);

@@ -1,7 +1,10 @@
 import { Check, HelpCircle, X } from "lucide-react";
 import { Link } from "react-router";
+import useHandlePlanSelection from "../hooks/useHandlePlanSelection";
 
 const PricingPage = () => {
+  const handlePlanSelection = useHandlePlanSelection();
+
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -62,12 +65,12 @@ const PricingPage = () => {
                   </li>
                 </ul>
               </div>
-              <Link
-                href="/register?plan=monthly"
+              <button
+                onClick={() => handlePlanSelection("monthly")}
                 className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-blue-600 px-6 font-medium text-white transition-colors hover:bg-blue-600/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
-                Start 14-Day Free Trial
-              </Link>
+                Get Started
+              </button>
             </div>
 
             {/* 3-Month Plan */}
@@ -76,7 +79,12 @@ const PricingPage = () => {
                 Most Popular
               </div>
               <div className="flex flex-col space-y-2">
-                <h3 className="text-2xl font-bold">3-Month Plan</h3>
+                <div className="flex gap-4 items-center">
+                  <h3 className="text-2xl font-bold">3-Month Plan</h3>
+                  <span className="text-sm text-green-600 font-medium">
+                    Save 15%
+                  </span>
+                </div>
                 <p className="text-gray-500">
                   Best value for serious preparation
                 </p>
@@ -84,7 +92,6 @@ const PricingPage = () => {
                   <span className="text-4xl font-bold">$49</span>
                   <span className="text-gray-500">/3 months</span>
                 </div>
-                <span className="text-green-600 font-medium">Save 15%</span>
               </div>
               <div className="mt-8 space-y-4 flex-1">
                 <h4 className="font-semibold text-lg">
@@ -117,7 +124,7 @@ const PricingPage = () => {
                 href="/register?plan=quarterly"
                 className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-blue-600 px-6 font-medium text-white transition-colors hover:bg-blue-600/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
-                Start 14-Day Free Trial
+                Best Value - Get Started
               </Link>
             </div>
           </div>

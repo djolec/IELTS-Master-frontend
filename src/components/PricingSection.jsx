@@ -1,28 +1,8 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router";
+import useHandlePlanSelection from "../hooks/useHandlePlanSelection";
 
 const PricingSection = () => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
-  const navigate = useNavigate();
-
-  const handlePlanSelection = (plan) => {
-    // Store the selection in localStorage before redirecting
-    localStorage.setItem("selectedPlan", JSON.stringify({ plan }));
-
-    if (isAuthenticated) {
-      // If already authenticated, redirect to subscription page
-      navigate(`/subscribe?plan=${plan}`);
-    } else {
-      // If not authenticated, redirect to Auth0 login with return URL
-      loginWithRedirect({
-        // This ensures they come back to the subscription page after auth
-        appState: {
-          returnTo: `/subscribe?plan=${plan}`,
-        },
-      });
-    }
-  };
+  const handlePlanSelection = useHandlePlanSelection();
 
   return (
     <section id="pricing" className="w-full py-12 md:py-24 lg:py-28 bg-sky-50">
@@ -76,7 +56,7 @@ const PricingSection = () => {
               <div className="flex gap-4 items-center">
                 <h3 className="text-xl font-bold">3-Month Plan</h3>
                 <div>
-                  <span className="text-sm text-blue-600 font-medium">
+                  <span className="text-sm text-green-600 font-medium">
                     Save 15%
                   </span>
                 </div>
