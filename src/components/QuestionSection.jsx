@@ -17,16 +17,13 @@ const QuestionSection = ({ section, handleAnswerChange, answers }) => {
       </div>
 
       <div className="space-y-6">
-        {(section.type === "true-false-ng" || section.type === "yes-no-ng") &&
-          section.questions.map((question) => (
-            <TrueFalseQuestion
-              key={question.id}
-              question={question}
-              options={section.options}
-              answers={answers}
-              handleAnswerChange={handleAnswerChange}
-            />
-          ))}
+        {(section.type === "true-false-ng" || section.type === "yes-no-ng") && (
+          <TrueFalseQuestion
+            section={section}
+            answers={answers}
+            handleAnswerChange={handleAnswerChange}
+          />
+        )}
 
         {section.type === "short-answer" && (
           <ShortAnswerQuestion
