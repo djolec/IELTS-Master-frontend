@@ -14,28 +14,28 @@ const FlowChart = ({ section, handleAnswerChange, answers }) => {
 
                 if (!hasBlank) {
                   // Regular text content
-                  return (
-                    <p key={itemIndex} className="">
-                      {item.text}
-                    </p>
-                  );
+                  return <p key={itemIndex}>{item.text}</p>;
                 } else {
                   // Content with blank to fill
                   const parts = item.text.split("......");
 
                   return (
-                    <div key={itemIndex} className="">
-                      <span className="">{parts[0]}</span>
-
-                      <input
-                        type="text"
-                        value={answers[item.questionId] || ""}
-                        onChange={(e) =>
-                          handleAnswerChange(item.questionId, e.target.value)
-                        }
-                        className="w-40 px-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 text-center inline-block mx-1"
-                        placeholder="Answer"
-                      />
+                    <div key={itemIndex}>
+                      <span>{parts[0]}</span>
+                      <div className="inline-block relative mx-2">
+                        <input
+                          type="text"
+                          value={answers[item.questionId] || ""}
+                          onChange={(e) =>
+                            handleAnswerChange(item.questionId, e.target.value)
+                          }
+                          className="w-44 px-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 text-center"
+                          placeholder="Answer"
+                        />
+                        <span className="absolute top-1/2 left-0 text-xs bg-white font-bold -translate-x-1/2 -translate-y-1/2">
+                          {item.questionId}
+                        </span>
+                      </div>
 
                       <span className="">{parts[1] || ""}</span>
                     </div>

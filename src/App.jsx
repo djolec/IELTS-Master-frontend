@@ -26,7 +26,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/reading-test" element={<PracticeTestsPage />} />
+            <Route path="/practice-tests" element={<PracticeTestsPage />} />
+            <Route path="/reading-test" element={<ReadingTestPage />} />
             <Route path="/auth-callback" element={<AuthCallbackPage />} />
             <Route path="/subscribe" element={<SubscribePage />} />
           </Routes>

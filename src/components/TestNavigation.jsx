@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const TestNavigation = ({ currentPassage, setCurrentPassage }) => {
+const TestNavigation = ({ currentPassage, setCurrentPassage, length }) => {
   return (
     <div className="flex justify-between bg-gray-50 px-6">
       <button
@@ -13,7 +13,7 @@ const TestNavigation = ({ currentPassage, setCurrentPassage }) => {
       </button>
       <button
         onClick={() => setCurrentPassage((prev) => prev + 1)}
-        disabled={currentPassage === 2}
+        disabled={currentPassage === length - 1}
         className="flex items-center gap-2 px-4 py-2 border rounded-md disabled:opacity-50 cursor-pointer"
       >
         <span className="hidden sm:inline">Next</span>

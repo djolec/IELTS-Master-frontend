@@ -1,14 +1,19 @@
+import { useReadingTest } from "../context/ReadingTestContext";
 import QuestionSection from "./QuestionSection";
 import TestNavigation from "./TestNavigation";
 
-const ReadingPassageQuestions = ({
-  activeView,
-  passage,
-  handleAnswerChange,
-  answers,
-  currentPassage,
-  setCurrentPassage,
-}) => {
+const ReadingPassageQuestions = () => {
+  const {
+    activeView,
+    passages,
+    handleAnswerChange,
+    answers,
+    currentPassage,
+    setCurrentPassage,
+  } = useReadingTest();
+
+  const passage = passages[currentPassage];
+
   return (
     <div
       className={`w-full md:w-1/2 ${
@@ -33,6 +38,7 @@ const ReadingPassageQuestions = ({
         <TestNavigation
           currentPassage={currentPassage}
           setCurrentPassage={setCurrentPassage}
+          length={passages.length}
         />
       </div>
     </div>

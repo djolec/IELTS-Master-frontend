@@ -1,4 +1,4 @@
-const HeadingMatchQuestion = ({ section, answers, handleAnswerChange }) => (
+const HeadingMatchQuestions = ({ section, answers, handleAnswerChange }) => (
   <>
     <div className="mb-6 p-4 bg-gray-50 rounded-lg">
       <h4 className="font-medium mb-3">List of Headings</h4>
@@ -32,4 +32,4 @@ const HeadingMatchQuestion = ({ section, answers, handleAnswerChange }) => (
     ))}
   </>
 );
-export default HeadingMatchQuestion;
+export default HeadingMatchQuestions;

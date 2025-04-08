@@ -1,4 +1,6 @@
 import { Timer, ListChecks, Book } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useReadingTest } from "../context/ReadingTestContext";
 
 const formatTime = (seconds) => {
   const mins = Math.floor(seconds / 60);
@@ -8,20 +10,29 @@ const formatTime = (seconds) => {
     .padStart(2, "0")}`;
 };
 
-const TimerAndControls = ({
-  currentPassage,
-  isTimerActive,
-  setIsTimerActive,
-  activeView,
-  setActiveView,
-  timeLeft,
-}) => {
+const TimerAndControls = () => {
+  const [timeLeft, setTimeLeft] = useState(60 * 60);
+  const [isTimerActive, setIsTimerActive] = useState(false);
+
+  const { currentPassage, activeView, setActiveView, passages } =
+    useReadingTest();
+
+  useEffect(() => {
+    let interval;
+    if (isTimerActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((time) => time - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerActive, timeLeft]);
+
   return (
     <div className="w-full flex flex-col md:flex-row md:items-center gap-4 md:gap-20 mb-4">
       <div className="flex items-center justify-between md:justify-start gap-4 h-8">
         <h1 className="text-xl font-bold">Reading Test</h1>
         <span className="text-sm text-gray-500">
-          Passage {currentPassage + 1}/3
+          Passage {currentPassage + 1}/{passages.length}
         </span>
       </div>
 

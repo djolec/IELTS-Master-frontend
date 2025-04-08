@@ -19,7 +19,7 @@ const MainNav = () => {
       </NavLink>
 
       <NavLink
-        to={"/reading-test"}
+        to={"/practice-tests"}
         className={({ isActive }) =>
           `text-base font-medium hover:text-blue-600 ${
             isActive ? "text-blue-600 font-semibold" : "text-gray-700"
@@ -38,6 +38,16 @@ const MainNav = () => {
         }
       >
         Pricing
+      </NavLink>
+      <NavLink
+        to={"/reading-test"}
+        className={({ isActive }) =>
+          `text-base font-medium hover:text-blue-600 ${
+            isActive ? "text-blue-600 font-semibold" : "text-gray-700"
+          }`
+        }
+      >
+        Reading Test
       </NavLink>
 
       {isAuthenticated ? (
