@@ -28,15 +28,13 @@ const QuestionSection = ({ section, handleAnswerChange, answers }) => {
             />
           ))}
 
-        {section.type === "short-answer" &&
-          section.questions.map((question) => (
-            <ShortAnswerQuestion
-              key={question.id}
-              question={question}
-              answers={answers}
-              handleAnswerChange={handleAnswerChange}
-            />
-          ))}
+        {section.type === "short-answer" && (
+          <ShortAnswerQuestion
+            section={section}
+            answers={answers}
+            handleAnswerChange={handleAnswerChange}
+          />
+        )}
 
         {section.type === "heading-match" && (
           <HeadingMatchQuestions
@@ -55,30 +53,19 @@ const QuestionSection = ({ section, handleAnswerChange, answers }) => {
         )}
 
         {section.type === "multiple-choice" && (
-          <>
-            {section.questions.map((question) => (
-              <MultipleChoiceQuestion
-                key={question.id}
-                question={question}
-                answers={answers}
-                handleAnswerChange={handleAnswerChange}
-              />
-            ))}
-          </>
+          <MultipleChoiceQuestion
+            section={section}
+            answers={answers}
+            handleAnswerChange={handleAnswerChange}
+          />
         )}
 
         {section.type === "paragraph-match" && (
-          <>
-            {section.questions.map((question) => (
-              <ParagraphMatchQuestion
-                key={question.id}
-                answers={answers}
-                question={question}
-                handleAnswerChange={handleAnswerChange}
-                paragraphLetters={section.paragraphLetters}
-              />
-            ))}
-          </>
+          <ParagraphMatchQuestion
+            answers={answers}
+            section={section}
+            handleAnswerChange={handleAnswerChange}
+          />
         )}
 
         {section.type === "table-completion" && (
